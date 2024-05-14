@@ -1,4 +1,8 @@
-#node modules et packages
-*package.json
-*package-lock.json
-*node_modules
+# Exclure tous les package.json
+**/package.json
+
+# Exclure tous les node_modules
+**/node_modules/
+
+# Exclure tous les package-lock.json
+**/package-lock.json
