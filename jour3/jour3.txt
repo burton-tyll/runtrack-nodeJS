@@ -1,0 +1,85 @@
+JOB01:	✅
+	Consigne: Installer MongoDB 
+
+JOB02:  ✅
+	Consigne: Afficher les base de données en console
+	Commandes effectuées: show dbs
+
+JOB03:  ✅
+	Consigne: Ajouter un bdd 'shop', créer une collection 'product' dans cette base avec des champs.
+	Commandes effectuées: - use shop
+			      - db.createCollection('product')
+			      - db.product.insertOne({name: 'chaussure', description: 'une paire de chaussures', price: 35, quantity: 120})
+
+JOB04:  ✅
+	Consigne: Ajoutez les documents suivants à votre collection “product” :
+		➔ name ⇒ “Pantalon noir”, description ⇒ “Un pantalon noir”, price ⇒ 14,99,
+		quantity ⇒ 12
+		➔ name ⇒ “chaussettes”, description ⇒ “chaussettes cool !”, price ⇒ 6,
+		quantity ⇒ 6
+
+	Commandes effectuées: 	- db.product.insertOne({name: 'pantalon noir', description: 'un pantalon noir', price: 14.99, quantity: 12})
+							- db.product.insertOne({name: 'chaussettes', description: 'chaussettes cool!', price: 6, quantity: 6})
+	
+	
+JOB05:  ✅
+	Consigne: 	Créez une nouvelle collection nommée “category” et insérez différentes catégories en une seule ligne de commande (au minimum 3).
+	Commandes effectuées: - db.category.insertMany([{'_id': new ObjectId(), 'category': 'pantalons'}, {'_id': new ObjectId(), 'category': 'chaussettes'}, {'_id': new ObjectId(), 'category': 'chaussures'}])
+
+
+JOB06:	✅
+	Consigne:	À l’aide d’une ligne de commande, afficher l’ensemble des collections de votre base de données 
+	Commandes: - show collections
+	
+	
+JOB07:	✅
+	Consigne:	Récupérez l’ensemble des données de la collection “category”
+	Commandes: - db.category.find()
+	
+	
+JOB08:	✅
+	Consigne:	Écrire une requête permettant d’afficher seulement deux catégories
+	Commandes: - db.category.find().limit(2)
+	
+	
+JOB09:	✅
+	Consigne:	Écrire une requête permettant de récupérer l’ensemble des produits classés par prix croissant.
+	Commandes: - db.product.find().sort({'price': 1})
+	
+	
+JOB10:	✅
+	Consigne:	Écrire une requête permettant de récupérer l’ensemble des produits classés par prix décroissant.
+	Commandes: - db.product.find().sort({'price': -1})
+	
+	
+JOB11:	✅
+	Consigne:	Écrire une requête permettant de récupérer les produits ayant un prix supérieur à 5 euros et un stock inférieur à 100.
+	Commandes: - db.product.find({$and: [{'price': {$gt: 5}}, {'quantity': {$lt: 100}}]})
+	
+	
+JOB12:	✅
+	Consigne:	Écrire une requête permettant de récupérer les produits ayant un prix supérieur à 14.99 euros ou un stock supérieur à 100
+	Commandes: - db.product.find({$or: [{'price': {$gt: 99}}, {'quantity': {$gt: 100}}]})
+
+	
+JOB13:	✅
+	Consigne:	Récupérer l’ensemble des produits sans leurs id.
+	Commandes: - db.product.find({}, {'_id': 0})
+	
+
+JOB14:	✅
+	Consigne:	Récupérer une catégorie à l’aide de son id.
+	Commandes: - db.category.findOne({'_id': ObjectId('66447f064181a1ee9a3fc4c3')})
+	
+	
+JOB15:	✅
+	Consigne:	Récupérer une catégorie à l’aide de son id.
+	Commandes: - db.category.updateOne({'category': 'bébé'}, {$set: {'category': 'vêtements pour enfant'}})
+
+
+JOB16:	✅
+	Consignes:
+	Commandes:	- db.product.aggregate({$lookup: {from: 'category', localField: 'category_id', foreignField: '_id', as: 'category'}}, ({$addFields: {'category': { $arrayElemAt: ['$category', 0] }}}))
+
+
+
