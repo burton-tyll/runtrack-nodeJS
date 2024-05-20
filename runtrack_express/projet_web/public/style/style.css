@@ -1,0 +1,43 @@
+nav a{
+    text-decoration: none;
+    color: #F28231;
+}
+
+nav .container-fluid{
+    height: 100px;
+    background-color: #EEEBE4;
+}
+
+.aboutBody{
+    background-color: #E7E7E7;
+}
+
+.aboutContainer{
+    width: 60%;
+    background-color: #FFFFFF;
+    margin-top: 100px;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.body404{
+    background-color: #EEEBE4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.body404 h1{
+    color: red
+}
+
+.body404 p{
+    color: #F28231;
+}
+
+.errorTitle{
+    text-align: center;
+}
